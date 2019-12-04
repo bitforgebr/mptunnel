@@ -8,10 +8,10 @@ all: mpclient mpserver .locale
 .locale: locale/zh_CN.po
 
 mpclient: client.o net.o mptunnel.o rbtree.o
-	$(CC) $^  -o mpclient $(LDFLAGS)
+	$(CC) $^  -o mpclient -llibintl $(LDFLAGS)
 
 mpserver: server.c mptunnel.o net.o rbtree.o
-	$(CC) $^  -o mpserver $(LDFLAGS)
+	$(CC) $^  -o mpserver -llibintl $(LDFLAGS)
 
 
 SOURCE = $(wildcard *.c)

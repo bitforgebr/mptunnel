@@ -113,7 +113,7 @@ int received_init(received_t* r) {
     memset(r, 0x00, sizeof(*r));
     
     pthread_mutexattr_init(&mutexattr);
-    pthread_mutexattr_settype(&mutexattr, PTHREAD_MUTEX_RECURSIVE_NP);
+    pthread_mutexattr_settype(&mutexattr, PTHREAD_MUTEX_RECURSIVE);
     pthread_mutex_init(&r->rlist_mutex, &mutexattr);
     pthread_mutexattr_destroy(&mutexattr);
     

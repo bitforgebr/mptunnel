@@ -2,6 +2,7 @@
 MultiPath Tunnel （多路 UDP 隧道的用户空间实现）
 
 [README in English](README.md)
+[README em português](README.pt_BR.md)
 
 ## 关于
 

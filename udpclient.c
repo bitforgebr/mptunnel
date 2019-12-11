@@ -27,6 +27,7 @@ int main(int argc, char** argv) {
 	int sockfd; 
 	char buffer[MAXLINE]; 
 	char *hello = "Hello from client"; 
+    int hello_n = 1;
 	struct sockaddr_in	 servaddr; 
 
     if (argc <= 1) {
@@ -54,11 +55,12 @@ int main(int argc, char** argv) {
 	int n, len = sizeof(buffer);
 	
     while( 1 ) {
-        n = sendto(sockfd, (const char *)hello, strlen(hello), 
+        sprintf(buffer, "%d %s", hello_n, hello);
+        n = sendto(sockfd, (const char *)buffer, strlen(buffer), 
             MSG_CONFIRM, (const struct sockaddr *) &servaddr, 
                 sizeof(servaddr)); 
         printf("Client sendto %d %d\n", n, errno); 
-        printf("Hello message sent.\n"); 
+        printf("Hello message (%s) sent.\n", buffer); 
 		
         n = recvfrom(sockfd, (char *)buffer, MAXLINE, 
                 RECVFROM_FLAGS, (struct sockaddr *) &servaddr, 
@@ -66,8 +68,9 @@ int main(int argc, char** argv) {
         printf("Client recvfrom %d %d\n", n, errno);
         buffer[n] = '\0'; 
         printf("Server : %s\n", buffer); 
+        hello_n = atoi(buffer);
 
-        sleep(3);
+        sleep(1);
     }
 
 	close(sockfd); 

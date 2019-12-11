@@ -26,6 +26,7 @@ static int g_listen_port = 0;
 int main(int argc, char** argv) {
 	int sockfd; 
 	char buffer[MAXLINE]; 
+    int hello_n = 1;
 	char *hello = "Hello from server"; 
 	struct sockaddr_in servaddr, cliaddr; 
 	
@@ -69,13 +70,15 @@ int main(int argc, char** argv) {
         printf("Server recvfrom %d %d\n", n, errno);
         buffer[n] = '\0'; 
         printf("Client : %s\n", buffer); 
-        n = sendto(sockfd, (const char *)hello, strlen(hello), 
+        hello_n = atoi(buffer);
+        sprintf(buffer, "%d %s", hello_n + 1, hello);
+        n = sendto(sockfd, (const char *)buffer, strlen(buffer), 
             MSG_CONFIRM, (const struct sockaddr *) &cliaddr, 
                 len); 
         printf("Server sendto %d %d\n", n, errno); 
-        printf("Hello message sent.\n"); 
+        printf("Hello message (%s) sent.\n", buffer); 
 
-        sleep(3);
+        sleep(1);
     }
 	
 	return 0; 

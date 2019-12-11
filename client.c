@@ -287,6 +287,8 @@ void restart_conn_signal(struct ev_loop *reactor, ev_async *w, int events) {
 * Initialize a receiver ev, is used to process the received data
 */
 ev_io* init_recv_ev(int fd) {
+    ev_async* ev = &ev_async_reset_conn.w;
+
     if (g_ev_reactor == NULL) {
         g_ev_reactor = ev_loop_new(EVFLAG_AUTO);
     }
@@ -297,7 +299,7 @@ ev_io* init_recv_ev(int fd) {
     ev_io_init(watcher, recv_remote_callback, fd, EV_READ);
     ev_io_start(g_ev_reactor, watcher);
     
-    ev_async_init(&ev_async_reset_conn.w, restart_conn_signal);
+    ev_async_init(ev, restart_conn_signal);
     ev_async_start(g_ev_reactor, &ev_async_reset_conn.w);
     
     return watcher;

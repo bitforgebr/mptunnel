@@ -1,8 +1,8 @@
 # mptunnel
 MultiPath Tunnel (Simpified user space MPUDP)
 
-[中文说明点此](README.zh_CN.md)
-[README em português](README.pt_BR.md)
+ - [中文说明点此](README.zh_CN.md)
+ - [README em português](README.pt_BR.md)
 
 ## ABOUT
 

@@ -1,12 +1,11 @@
 # mptunnel
 MultiPath Tunnel (Simpified user space MPUDP)
 
-[中文说明点此](README.zh_CN.md)
-[README in English](README.md)
+ - [中文说明点此](README.zh_CN.md)
+ - [README in English](README.md)
 
 ## SOBRE
 
-Túnel 
 MultiPath Tunnel é uma implementação em user space de UDP multipath. Como MultiPath TCP, você pode
 estabilizar várias conexões do servidor local para o remoto.
 

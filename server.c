@@ -188,13 +188,11 @@ void recv_bridge_callback(struct ev_loop* reactor, ev_io* w, int events) {
 * ev processing thread
 */
 void* ev_thread(void* ptr) {
-    int port = 3002;
-    
     LOGD(_("libev thread started\n"));
     
-    g_listen_fd = net_bind("0.0.0.0", port, SOCK_DGRAM);
+    g_listen_fd = net_bind("0.0.0.0", g_listen_port, SOCK_DGRAM);
     if (g_listen_fd < 0) {
-        LOGE(_("Can't listen port %d: %s\n"), port, strerror(errno));
+        LOGE(_("Can't listen port %d: %s\n"), g_listen_port, strerror(errno));
         exit(0);
     }
     
@@ -358,7 +356,7 @@ int main(int argc, char** argv) {
     
     if (argc <= 3) {
         fprintf(stderr, _("Usage: <%s> <listen_port> <target_ip> <target_port>\n"), argv[0]);
-        fprintf(stderr, _("To disable encryption, set environment variable MPTUNNEL_ENCRYPT=0\n"));
+        fprintf(stderr, _("To enable encryption, set environment variable MPTUNNEL_ENCRYPT=1\n"));
         exit(-1);
     }
     else {
@@ -377,7 +375,7 @@ int main(int argc, char** argv) {
         }
         
         if (getenv("MPTUNNEL_ENCRYPT") == NULL) {
-            g_config_encrypt = 1;
+            g_config_encrypt = 0;
         }
         else if(atoi(getenv("MPTUNNEL_ENCRYPT")) == 0) {
             g_config_encrypt = 0;

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-19 21:07+0800\n"
+"POT-Creation-Date: 2019-12-11 14:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,209 +17,209 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: client.c:55
+#: client.c:56
 msgid "Starting libev thread\n"
 msgstr ""
 
-#: client.c:59 server.c:209
+#: client.c:60 server.c:207
 msgid "libev thread exited\n"
 msgstr ""
 
-#: client.c:71
+#: client.c:72
 #, c-format
-msgid "Usage: <%s> <config_file>\n"
+msgid "Usage: <%s> <listen_port> <config_file>\n"
 msgstr ""
 
-#: client.c:72 server.c:361
+#: client.c:73 server.c:359
 #, c-format
-msgid "To disable encryption, set environment variable MPTUNNEL_ENCRYPT=0\n"
+msgid "To enable encryption, set environment variable MPTUNNEL_ENCRYPT=1\n"
 msgstr ""
 
-#: client.c:88 server.c:390
+#: client.c:92 server.c:388
 #, c-format
 msgid "Configuration: Encryption %s\n"
 msgstr ""
 
-#: client.c:88 server.c:390
+#: client.c:92 server.c:388
 msgid "enabled"
 msgstr ""
 
-#: client.c:88 server.c:390
+#: client.c:92 server.c:388
 msgid "disabled"
 msgstr ""
 
-#: client.c:94
+#: client.c:99
 #, c-format
 msgid "Can't listen on：%s\n"
 msgstr ""
 
-#: client.c:97
+#: client.c:102
 msgid "Port listening started\n"
 msgstr ""
 
-#: client.c:133
+#: client.c:138
 #, c-format
 msgid "Connection of fd=%d is not exists in Connection List\n"
 msgstr ""
 
-#: client.c:149
+#: client.c:154
 #, c-format
 msgid ""
 "Error while receive data, remote bridge %s:%d (fd=%d) may close the "
 "connection(errno=%d): %s\n"
 msgstr ""
 
-#: client.c:159
+#: client.c:164
 #, c-format
 msgid ""
 "The connection is marked broken, try restart connection to %s:%d(fd=%d),"
 "errno=%d: %s\n"
 msgstr ""
 
-#: client.c:163
+#: client.c:168
 #, c-format
 msgid ""
 "Network broken, try to restart connection to %s:%d(fd=%d), errno=%d: %s\n"
 msgstr ""
 
-#: client.c:182
+#: client.c:187
 #, c-format
 msgid ""
 "Can't received data from remote bridge(%d), remote bridge may close the "
 "connection (readb=0): %s\n"
 msgstr ""
 
-#: client.c:210
+#: client.c:215
 #, c-format
 msgid "Receive control packet from %s:%d (fd=%d), packet ID is %d, drop it.\n"
 msgstr ""
 
-#: client.c:216
+#: client.c:221
 #, c-format
 msgid ""
 "Received unknown type packet from %s:%d (fd=%d), may cause by bad network, "
 "packet ID is %d, drop it."
 msgstr ""
 
-#: client.c:221
+#: client.c:226
 #, c-format
 msgid "Invalid packet type, type=%d, id=%d\n"
 msgstr ""
 
-#: client.c:232
+#: client.c:237
 #, c-format
 msgid ""
 "Received packet from remote bridge %s:%d (fd=%d) of %d bytes, packet ID is "
 "%d, drop it.\n"
 msgstr ""
 
-#: client.c:239
+#: client.c:244
 #, c-format
 msgid ""
 "Received packet from remote bridge %s:%d (fd=%d) of %d bytes, packet ID is "
 "%d, raw lenth %d bytes, payload length %d bytes\n"
 msgstr ""
 
-#: client.c:251
+#: client.c:256
 #, c-format
 msgid "Can not forward packet #%d to client: %s\n"
 msgstr ""
 
-#: client.c:255
+#: client.c:260
 #, c-format
 msgid "Client might close the connection, packet #%d can not be forwarded\n"
 msgstr ""
 
-#: client.c:259
+#: client.c:264
 #, c-format
 msgid "Forwarded packet to client(port %u) of %d bytes, ID is %d\n"
 msgstr ""
 
-#: client.c:319
+#: client.c:326
 #, c-format
 msgid "Connect to %s:%d\n"
 msgstr ""
 
-#: client.c:323
+#: client.c:330
 #, c-format
 msgid "Can't connect to %s:%d: %s\n"
 msgstr ""
 
-#: client.c:327
+#: client.c:334
 #, c-format
 msgid "Connected to remote host %s:%d, fd is %d\n"
 msgstr ""
 
-#: client.c:341
+#: client.c:348
 msgid "watcher initalize failed\n"
 msgstr ""
 
-#: client.c:358
+#: client.c:365
 #, c-format
 msgid "Error while reading configura file `%s‘：%s\n"
 msgstr ""
 
-#: client.c:378
+#: client.c:385
 #, c-format
 msgid "Get remote server address %s:%d from configura file\n"
 msgstr ""
 
-#: client.c:404
+#: client.c:411
 #, c-format
 msgid "Reconnected to %s:%d, fd %d -> %d"
 msgstr ""
 
-#: client.c:441 server.c:397
+#: client.c:448 server.c:395
 msgid "Initializing libev thread\n"
 msgstr ""
 
-#: client.c:453
+#: client.c:460
 #, c-format
 msgid "Received data from client(:%u), fd=%d\n"
 msgstr ""
 
-#: client.c:459
+#: client.c:466
 #, c-format
 msgid "Client close the connection: %s\n"
 msgstr ""
 
-#: client.c:464
+#: client.c:471
 msgid "Can't received from client, client close the connection\n"
 msgstr ""
 
-#: client.c:486
+#: client.c:493
 #, c-format
 msgid ""
 "No packet received from %s:%d since last packet sent to it (%d seconds), "
 "assume connection broken, about to reconnect\n"
 msgstr ""
 
-#: client.c:502
+#: client.c:509
 #, c-format
 msgid "Error while sending data to %s:%d(%d) with %d bytes: %s\n"
 msgstr ""
 
-#: client.c:505
+#: client.c:512
 #, c-format
 msgid "About to reconnect to %s:%d (err: %s)\n"
 msgstr ""
 
-#: client.c:511
+#: client.c:518
 #, c-format
 msgid "%s:%d(%d) may close the connection\n"
 msgstr ""
 
-#: client.c:515
+#: client.c:522
 #, c-format
 msgid "Packet sent to %s:%d(%d) of %d bytes.\n"
 msgstr ""
 
-#: client.c:522
+#: client.c:529
 #, c-format
 msgid "Connection to %s:%d is broken, try reconnect\n"
 msgstr ""
 
-#: client.c:525
+#: client.c:532
 #, c-format
 msgid ""
 "I will not perform reconnect in current thread(%s), I will call "
@@ -329,30 +329,30 @@ msgstr ""
 msgid "Connection to target server seems closed, can't forward packet #%d\n"
 msgstr ""
 
-#: server.c:193
+#: server.c:191
 msgid "libev thread started\n"
 msgstr ""
 
-#: server.c:197
+#: server.c:195
 #, c-format
 msgid "Can't listen port %d: %s\n"
 msgstr ""
 
-#: server.c:229
+#: server.c:227
 #, c-format
 msgid ""
 "Packet is %d bytes, which excees max packet size limit (%d bytes), spilt the "
 "packet into two smaller packets before send.\n"
 msgstr ""
 
-#: server.c:259
+#: server.c:257
 #, c-format
 msgid ""
 "No packet received from bridge (%s:%u) for %d seconds, assume the connection "
 "is closed, stop forward packet to it %d\n"
 msgstr ""
 
-#: server.c:267
+#: server.c:265
 #, c-format
 msgid ""
 "The time difference between packet received and packet sent of bridge %s:%u "
@@ -360,49 +360,49 @@ msgid ""
 "broken, stop forward packet to it %d\n"
 msgstr ""
 
-#: server.c:280
+#: server.c:278
 #, c-format
 msgid "Can't send packet to bridge(%s:%d) of %d bytes, packet ID is %d: %s\n"
 msgstr ""
 
-#: server.c:287
+#: server.c:285
 #, c-format
 msgid "Forward packet to bridge(port %u) of %d bytes, packet ID is %d\n"
 msgstr ""
 
-#: server.c:306
+#: server.c:304
 msgid "Thread which forward packet from server to bridge is started\n"
 msgstr ""
 
-#: server.c:314
+#: server.c:312
 #, c-format
 msgid "Could not connect to target server：%s\n"
 msgstr ""
 
-#: server.c:326
+#: server.c:324
 #, c-format
 msgid "Target server close the connection: %s\n"
 msgstr ""
 
-#: server.c:332
+#: server.c:330
 msgid "Can't received packet from server, server close the connection\n"
 msgstr ""
 
-#: server.c:344
+#: server.c:342
 msgid "Thread which forward packet from server to bridge exited\n"
 msgstr ""
 
-#: server.c:360
+#: server.c:358
 #, c-format
 msgid "Usage: <%s> <listen_port> <target_ip> <target_port>\n"
 msgstr ""
 
-#: server.c:391
+#: server.c:389
 #, c-format
 msgid "Configuration: Local listening port: %d\n"
 msgstr ""
 
-#: server.c:392
+#: server.c:390
 #, c-format
 msgid "Configuration: server：%s:%d\n"
 msgstr ""

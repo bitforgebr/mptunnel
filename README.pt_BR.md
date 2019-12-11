@@ -56,26 +56,28 @@ mpserver 2000 127.0.0.1 1194
 Localmente, eu executo o mpclient:
 
 ```
-mpclient mpclient.conf
+mpclient 4000 mpclient.conf
 ```
 
 Abaixo está o conteúdo do arquivo mpclient.conf 
 
 ```
-1.1.1.1 4000
-bridge1.myhost.com 4000
-bridge2.myhost.com 4000
-```
+# mptunnel
 
-1.1.1.1 é o IP do servidor OpenVPN. É OK usá-lo como um servidor bridge.
+localhost 4001
+localhost 4002
+localhost 4003
+```
 
 Em cada servidor bridge, use _socat_ para redirecionar os pacotes:
 
 ```
-socat udp-listen:4000 udp4:1.1.1.1:2000
+socat udp-listen:4001 udp4:1.1.1.1:2000
+socat udp-listen:4002 udp4:1.1.1.1:2000
+socat udp-listen:4003 udp4:1.1.1.1:2000
 ```
 
-Os servidores bridge irão ficar em listen na porta 4000, redirecionar qualquer pacote recebido para 1.1.1.1:2000, 
+Os servidores bridge irão ficar em listen nas portas 4001, 4002 e 4003 e redirecionar qualquer pacote recebido para 1.1.1.1:2000, 
 e vice-versa.
 
 
@@ -89,7 +91,7 @@ uma conexão OpenVPN sobre o MultiPath UDP tunnel.
 
 * Atualmente você pode especificar apenas um único host alvo. Alguém sabe se existe uma biblioteca C de proxy SOCKS5? Penso que ao tornar o mpclient como um servidor proxy SOCKS irá torná-lo mais fácil de usar.
 
-* mptunnel encripta os pacotes por padrão, mas isso irá diminuir o throughput. Fiz alguns testes no meu PC com processador Athlon II P320, o throughput atual é 3Mbps enquanto usando três túneis, após desabilitar a criptografia o throughput sobe para 300Mbps. Se você não gosta que o mptunnel encripte os pacotes, defina a variável de ambiente MPTUNNEL_ENCRYPT=0
+* mptunnel não encripta os pacotes por padrão, apesar de ter essa opção, pois isso irá diminuir o throughput. Em alguns testes o throughput atual é 3Mbps enquanto usando três túneis com criptografia, e após desabilitar a criptografia o throughput sobe para 300Mbps. Se você ainda quiser que o mptunnel encripte os pacotes, defina a variável de ambiente MPTUNNEL_ENCRYPT=1.
 
 ## DEPENDÊNCIAS
 

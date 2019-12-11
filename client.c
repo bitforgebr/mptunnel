@@ -26,6 +26,7 @@ static struct list_head g_buffers = LIST_HEAD_INIT(g_buffers);
 static struct sockaddr g_client_addr;
 static socklen_t g_client_addrlen = 0;
 
+static int g_listen_port = 0;
 static int g_listen_fd;
 
 static int* g_packet_id = NULL;
@@ -67,29 +68,33 @@ int main(int argc, char** argv) {
     bindtextdomain("mptunnel", "locale");
     textdomain("mptunnel");
     
-    if (argc <= 1) {
-        fprintf(stderr, _("Usage: <%s> <config_file>\n"), argv[0]);
-        fprintf(stderr, _("To disable encryption, set environment variable MPTUNNEL_ENCRYPT=0\n"));
+    if (argc <= 2) {
+        fprintf(stderr, _("Usage: <%s> <listen_port> <config_file>\n"), argv[0]);
+        fprintf(stderr, _("To enable encryption, set environment variable MPTUNNEL_ENCRYPT=1\n"));
         exit(-1);
     }
-    
-            
-    if (getenv("MPTUNNEL_ENCRYPT") == NULL) {
-        g_config_encrypt = 1;
-    }
-    else if(atoi(getenv("MPTUNNEL_ENCRYPT")) == 0) {
-        g_config_encrypt = 0;
-    }
     else {
-        g_config_encrypt = 1;
+        /// Load the configuration information
+        g_listen_port = atoi(argv[1]);
+
+
+        if (getenv("MPTUNNEL_ENCRYPT") == NULL) {
+            g_config_encrypt = 0;
+        }
+        else if(atoi(getenv("MPTUNNEL_ENCRYPT")) == 0) {
+            g_config_encrypt = 0;
+        }
+        else {
+            g_config_encrypt = 1;
+        }
+
+
+        LOGD(_("Configuration: Encryption %s\n"), (g_config_encrypt) ? _("enabled") : _("disabled"));
     }
-    
-    
-    LOGD(_("Configuration: Encryption %s\n"), (g_config_encrypt) ? _("enabled") : _("disabled"));
 
     
     
-    g_listen_fd = net_bind("0.0.0.0", 3210, SOCK_DGRAM);
+    g_listen_fd = net_bind("0.0.0.0", g_listen_port, SOCK_DGRAM);
     if (g_listen_fd < 0) {
         LOGE(_("Can't listen on：%s\n"), strerror(errno));
         exit(0);
@@ -97,7 +102,7 @@ int main(int argc, char** argv) {
     LOGD(_("Port listening started\n"));
     
     pthread_t tid;
-    pthread_create(&tid, NULL, client_thread, strdup(argv[1]));
+    pthread_create(&tid, NULL, client_thread, strdup(argv[2]));
     pthread_detach(tid);
     
     while (1) {

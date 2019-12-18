@@ -22,6 +22,7 @@
 #define RECVFROM_FLAGS ( 0 )
 #endif
 
+static const char* g_target_host = NULL;
 static int g_target_port = 0;
 
 // Driver code 
@@ -32,13 +33,14 @@ int main(int argc, char** argv) {
     int hello_n = 1;
 	struct sockaddr_in	 servaddr; 
 
-    if (argc <= 1) {
-        fprintf(stderr, ("Usage: <%s> <target_port>\n"), argv[0]);
+    if (argc <= 2) {
+        fprintf(stderr, ("Usage: <%s> <target_host> <target_port>\n"), argv[0]);
         exit(-1);
     }
     else {
         /// Load the configuration information
-        g_target_port = atoi(argv[1]);
+        g_target_host = argv[1];
+        g_target_port = atoi(argv[2]);
     }
 
 	// Creating socket file descriptor 
@@ -52,7 +54,7 @@ int main(int argc, char** argv) {
 	// Filling server information 
 	servaddr.sin_family = AF_INET; 
 	servaddr.sin_port = htons(g_target_port); 
-	servaddr.sin_addr.s_addr = inet_addr("127.0.0.1"); 
+	servaddr.sin_addr.s_addr = inet_addr(g_target_host); 
 	
 	int n, len = sizeof(buffer);
 	

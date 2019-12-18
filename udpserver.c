@@ -10,7 +10,9 @@
 #include <arpa/inet.h> 
 #include <netinet/in.h> 
 
+#ifndef MSG_CONFIRM
 #define MSG_CONFIRM	0x800	/* Confirm path validity */
+#endif
 
 #define MAXLINE 1024 
 

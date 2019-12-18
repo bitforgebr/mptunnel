@@ -37,3 +37,5 @@ callgrind*
 *.mo
 
 locale/zh_CN.po~
+mptunnel_deploy
+mptunnel.pot

@@ -4,4 +4,4 @@
 socat udp-listen:4001 udp4:localhost:2000&
 socat udp-listen:4002 udp4:localhost:2000&
 socat udp-listen:4003 udp4:localhost:2000&
-./udpclient 4000 client.sample.conf&
+echo "*** run ./udpclient 4000 to test connection ***"

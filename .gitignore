@@ -23,19 +23,19 @@
 *.x86_64
 *.hex
 
+# Project
 mpserver
 mpclient
+udpclient
+udpserver
 bridge
 *.log
-
 client.conf
 server.conf
-
 callgrind*
 *valgrind*
 *core*
 *.mo
-
 locale/zh_CN.po~
 mptunnel_deploy
 mptunnel.pot

@@ -8,10 +8,10 @@ all: mpclient mpserver .locale udpclient udpserver
 .locale: locale/zh_CN.po
 
 mpclient: client.o net.o mptunnel.o rbtree.o
-	$(CC) $^  -o mpclient -llibintl $(LDFLAGS)
+	$(CC) $^  -o mpclient $(LDFLAGS)
 
 mpserver: server.c mptunnel.o net.o rbtree.o
-	$(CC) $^  -o mpserver -llibintl $(LDFLAGS)
+	$(CC) $^  -o mpserver $(LDFLAGS)
 
 udpclient: udpclient.c
 	$(CC) $^  -o udpclient $(LDFLAGS)

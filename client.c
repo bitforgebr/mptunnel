@@ -371,14 +371,14 @@ int connect_to_servers(struct list_head *list, char* server_list_path) {
         memset(line, 0x00, sizeof(line));
         port = 0;
         
-        fgets(line, sizeof(line) - 1, fp);
-        
-        if (line[0] == 0x00 || line[0] == '\n' || line[0] == '\r') {
-            continue;
-        }
-        if (line[0] == '#') {
-            continue;
-        }
+        if( fgets(line, sizeof(line) - 1, fp) ) {
+		if (line[0] == 0x00 || line[0] == '\n' || line[0] == '\r') {
+			continue;
+		}
+		if (line[0] == '#') {
+			continue;
+		}
+	}
         
         sscanf(line, "%s %d\n", host, &port);
         
